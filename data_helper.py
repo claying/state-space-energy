@@ -71,7 +71,7 @@ x = x.ix[:,'x1':]
 x = np.ma.masked_invalid(x)
 
 kl = KalmanFilter(n_dim_obs=5, n_dim_state=5)
-model = kl.em(x, n_iter=2)
+model = kl.em(x, n_iter=40)
 x_smooth_1, _ = model.smooth(x)
 
 # bat_id = 2
@@ -86,7 +86,7 @@ x = x.ix[:,'x1':]
 x = np.ma.masked_invalid(x)
 
 kl = KalmanFilter(n_dim_obs=5, n_dim_state=5)
-model = kl.em(x, n_iter=2)
+model = kl.em(x, n_iter=40)
 x_smooth_2, _ = model.smooth(x)
 
 # bat_id = 3
@@ -101,7 +101,7 @@ x = x.ix[:,'x1':]
 x = np.ma.masked_invalid(x)
 
 kl = KalmanFilter(n_dim_obs=5, n_dim_state=5)
-model = kl.em(x, n_iter=2)
+model = kl.em(x, n_iter=40)
 x_smooth_3, _ = model.smooth(x)
 
 # bat_id = 4
@@ -116,7 +116,7 @@ x = x.ix[:,'x1':]
 x = np.ma.masked_invalid(x)
 
 kl = KalmanFilter(n_dim_obs=5, n_dim_state=5)
-model = kl.em(x, n_iter=2)
+model = kl.em(x, n_iter=40)
 x_smooth_4, _ = model.smooth(x)
 
 x_smooth = [x_smooth_1, x_smooth_2, x_smooth_3, x_smooth_4]
