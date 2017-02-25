@@ -1,11 +1,11 @@
 import numpy as np 
-from data_helper import load_data, split_data, get_bat
+from data_helper_missing_values import load_data, split_data, get_bat
 from public_mean_square_error import score_function
 import period
 import pandas as pd 
 
 x_train_all, y_train_all = load_data(split='train')
-bat_id = 2
+bat_id = 4
 x_train, y_train = get_bat(bat_id, x_train_all, y_train_all)
 x_test_all = load_data(split='test')
 x_test = get_bat(bat_id, x_test_all)
@@ -29,8 +29,11 @@ regimes_test = regimes_array[T_train:]
 x_train = x_train.ix[:,'x1':]
 x_test = x_test.ix[:,'x1':]
 
-x_train = x_train.ix[:, [0,2,3]]
-x_test = x_test.ix[:, [0,2,3]]
+x_train = x_train.ix[:, [0,2,3,4]]
+x_test = x_test.ix[:, [0,2,3,4]]
+
+x_train = x_train.interpolate()
+x_test = x_test.interpolate()
 
 x_train = np.ma.masked_invalid(x_train)
 x_test = np.ma.masked_invalid(x_test)
@@ -52,7 +55,7 @@ kl = MultiRegimes(observation_matrices=np.eye(y_dim, state_dim), transition_offs
 
 em_vars = ['transition_matrices', 'transition_covariance', 'observation_offsets', 'observation_covariance', 'initial_state_mean']
 
-model = kl.em(y_train, x_train, em_vars=em_vars, n_iter=80)
+model = kl.em(y_train, x_train, em_vars=em_vars, n_iter=300)
 
 
 A = model.transition_matrices

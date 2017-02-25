@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np 
-from data_helper import load_data, split_data, get_bat
+from data_helper_missing_values import load_data, split_data, get_bat
 from public_mean_square_error import score_function
 import period
 
 x_train_all, y_train_all = load_data()
-bat_id = 3
+bat_id = 4
 x_train, y_train = get_bat(bat_id, x_train_all, y_train_all)
 T = y_train.shape[0]
 percent = 0.8
