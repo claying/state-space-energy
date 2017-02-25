@@ -1,5 +1,5 @@
+import numpy as np
 import pandas as pd
-import numpy as np 
 
 def load_data(filepath='data/', split='train'):
 	"""load all data"""
@@ -65,25 +65,3 @@ def rnn_load_data(bat_id, timesteps, cut_percent=0.8):
 	u_train, u_val = u_train[:idx], u_train[idx:]
 	return dict(x=x_train, u=u_train, y=y_train), dict(x=x_val, u=u_val, y=y_val)
 
-
-
-
-
-
-# x_train_all, y_train_all = load_data()
-
-# x_train, y_train = get_bat(1, x_train_all, y_train_all)
-# import datetime
-# print pd.to_datetime(x_train['Time'])
-# import matplotlib.pyplot as plt
-# x_train.plot(x='Time', y=['x1'])
-# plt.show()
-# print y_train.columns.get_values()
-# plot_data(x_train, y_train)
-# print y_train.ix[y_train.shape[0]-101:,:]
-
-# x_train, y_train, x_test, y_test = split_data(x_train, y_train, 0.7)
-# print x_train.mask()
-
-
-# plot_data(x_train, y_train)
