@@ -51,8 +51,7 @@ x_test = x_test.ix[:,'x1':]
 x_train = x_train.as_matrix()
 x_test = x_test.as_matrix()
 
-# x_train = x_train.ix[:, [0,2,3,4]]
-# x_test = x_test.ix[:, [0,2,3,4]]
+
 
 # x_train = x_train.interpolate()
 # x_test = x_test.interpolate()
@@ -77,7 +76,9 @@ kl = MultiRegimes(observation_matrices=np.eye(y_dim, state_dim), transition_offs
 
 em_vars = ['transition_matrices', 'transition_covariance', 'observation_offsets', 'observation_covariance', 'initial_state_mean', 'observation_matrices']
 
+
 model = kl.em(y_train, x_train, em_vars=em_vars, n_iter=500)
+
 
 
 A = model.transition_matrices

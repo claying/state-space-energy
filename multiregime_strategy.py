@@ -5,6 +5,7 @@ import period
 
 x_train_all, y_train_all = load_data('data/complete/')
 bat_id = 3
+
 x_train, y_train = get_bat(bat_id, x_train_all, y_train_all)
 T = y_train.shape[0]
 percent = 0.8
